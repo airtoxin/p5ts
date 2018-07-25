@@ -28,6 +28,7 @@ export class Sketch implements SketchConfig {
 
   draw() {
     this.p5.background(100);
+    this.p5.ellipse(Math.random() * 500, Math.random() * 500, Math.random() * 500, Math.random() * 500);
   }
 
   windowResized() {
