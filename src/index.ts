@@ -1,5 +1,6 @@
 import "p5";
-import { Sketch } from "./Sketch";
+import { bindSketchToP5 } from "./Sketch";
+import { SampleSketch } from "./sketches/SampleSketch";
 
 // tslint:disable-next-line
-new p5(Sketch.bindToP5);
+new p5(bindSketchToP5(SampleSketch));

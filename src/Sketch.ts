@@ -1,21 +1,6 @@
-export interface SketchConfig {
-  preload(): void;
-  setup(): void;
-  draw(): void;
-  windowResized(): void;
-}
-
-export class Sketch implements SketchConfig {
-  static bindToP5(p5: p5): void {
-    const sketch = new Sketch(p5);
-    p5.preload = sketch.preload.bind(sketch);
-    p5.setup = sketch.setup.bind(sketch);
-    p5.draw = sketch.draw.bind(sketch);
-    p5.windowResized = sketch.windowResized.bind(sketch);
-  }
-
-  private constructor(
-    private p5: p5
+export class Sketch {
+  constructor(
+    protected p5: p5
   ) {}
 
   preload() {
@@ -23,15 +8,24 @@ export class Sketch implements SketchConfig {
   }
 
   setup() {
-    this.p5.createCanvas(500, 500);
+    // NOTHING
   }
 
   draw() {
-    this.p5.background(100);
-    this.p5.ellipse(Math.random() * 500, Math.random() * 500, Math.random() * 500, Math.random() * 500);
+    // NOTHING
   }
 
   windowResized() {
     // NOTHING
   }
+}
+
+type Constructor<T = {}> = new (...args: any[]) => T;
+
+export const bindSketchToP5 = (SketchConstructor: Constructor<Sketch>) => (p5: p5) => {
+  const sketch = new SketchConstructor(p5);
+  p5.preload = sketch.preload.bind(sketch);
+  p5.setup = sketch.setup.bind(sketch);
+  p5.draw = sketch.draw.bind(sketch);
+  p5.windowResized = sketch.windowResized.bind(sketch);
 }
