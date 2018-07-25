@@ -25,6 +25,7 @@
     "webpack-serve": "^2.0.2"
   },
   "dependencies": {
+    "ccapture.js": "^1.1.0",
     "p5": "^0.6.1"
   }
 }
