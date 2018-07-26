@@ -27,6 +27,7 @@
   },
   "dependencies": {
     "ccapture.js": "^1.1.0",
+    "gif.js": "^0.2.0",
     "p5": "^0.6.1"
   }
 }
