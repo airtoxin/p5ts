@@ -1,6 +1,7 @@
 export class Sketch {
   constructor(
-    protected p5: p5
+    protected p5: p5,
+    private capturer: any = new (window as any).CCapture({ format: "gif", workersPath: '' })
   ) {}
 
   preload() {
@@ -17,6 +18,22 @@ export class Sketch {
 
   windowResized() {
     // NOTHING
+  }
+
+  startCapture() {
+    this.capturer.start();
+  }
+
+  capture(canvas?: HTMLCanvasElement) {
+    this.capturer.capture(canvas);
+  }
+
+  stopCapture() {
+    this.capturer.stop();
+  }
+
+  saveCaptured() {
+    this.capturer.save();
   }
 }
 
