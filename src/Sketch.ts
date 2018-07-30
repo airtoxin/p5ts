@@ -1,15 +1,20 @@
 export class Sketch {
+  protected SIZE: number = 500;
+  protected canvas?: HTMLCanvasElement;
+
   constructor(
     protected p5: p5,
     private capturer: any = new (window as any).CCapture({ format: "gif", workersPath: '' })
-  ) {}
+  ) {
+  }
 
   preload() {
     // NOTHING
   }
 
   setup() {
-    // NOTHING
+    const renderer = this.p5.createCanvas(this.SIZE, this.SIZE);
+    this.canvas = (renderer as any).canvas;
   }
 
   draw() {
@@ -24,17 +29,15 @@ export class Sketch {
     this.capturer.start();
   }
 
-  capture(canvas?: HTMLCanvasElement) {
-    this.capturer.capture(canvas);
+  capture() {
+    this.capturer.capture(this.canvas);
   }
 
   stopCapture() {
     this.capturer.stop();
-  }
-
-  saveCaptured() {
     this.capturer.save();
   }
+
 }
 
 type Constructor<T = {}> = new (...args: any[]) => T;

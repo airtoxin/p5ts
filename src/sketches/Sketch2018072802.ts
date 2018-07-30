@@ -1,13 +1,12 @@
 import { Sketch } from "../Sketch";
 
 export class Sketch2018072802 extends Sketch {
-  private canvas: HTMLCanvasElement | undefined;
   private chunks: any[] = [];
   private recorder: any;
 
   setup() {
-    const renderer = this.p5.createCanvas(300, 300);
-    this.canvas = (renderer as any).canvas;
+    super.setup();
+
     this.p5.background(0);
     const stream = (this.canvas as any).captureStream(30);
     this.recorder = new (window as any).MediaRecorder(stream);
@@ -32,14 +31,14 @@ export class Sketch2018072802 extends Sketch {
   draw() {
     this.p5.background(0);
 
-    for (let i = 0; i < 500; i += 5) {
+    for (let i = 0; i < this.SIZE; i += 5) {
 
       if (i % 2 === 0) {
         this.p5.fill(0);
       } else {
         this.p5.fill(255);
       }
-      this.p5.ellipse(150 + this.getDiffX(i), 150 + this.getDiffY(i), 500 - i, 500 - i);
+      this.p5.ellipse(150 + this.getDiffX(i), 150 + this.getDiffY(i), this.SIZE - i, this.SIZE - i);
     }
 
     if (this.p5.frameCount >= 360) {
