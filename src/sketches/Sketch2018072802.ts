@@ -1,6 +1,7 @@
 import { Sketch } from "../Sketch";
 
 export class Sketch2018072802 extends Sketch {
+  protected SIZE: number = 300;
   private chunks: any[] = [];
   private recorder: any;
 
@@ -31,14 +32,14 @@ export class Sketch2018072802 extends Sketch {
   draw() {
     this.p5.background(0);
 
-    for (let i = 0; i < this.SIZE; i += 5) {
+    for (let i = 0; i < 500; i += 5) {
 
       if (i % 2 === 0) {
         this.p5.fill(0);
       } else {
         this.p5.fill(255);
       }
-      this.p5.ellipse(150 + this.getDiffX(i), 150 + this.getDiffY(i), this.SIZE - i, this.SIZE - i);
+      this.p5.ellipse(150 + this.getDiffX(i), 150 + this.getDiffY(i), 500 - i, 500 - i);
     }
 
     if (this.p5.frameCount >= 360) {

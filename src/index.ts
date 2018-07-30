@@ -9,4 +9,4 @@ import { Sketch2018072802 } from "./sketches/Sketch2018072802";
 import { Sketch2018072803 } from "./sketches/Sketch2018072803";
 
 // tslint:disable-next-line
-new p5(bindSketchToP5(Sketch2018072803));
+new p5(bindSketchToP5(Sketch2018072802));
