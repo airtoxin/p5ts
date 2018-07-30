@@ -1,10 +1,12 @@
 export class Sketch {
   protected SIZE: number = 500;
   protected canvas?: HTMLCanvasElement;
+  protected FRAME_RATE: number = 60;
+
+  private capturer: any;
 
   constructor(
     protected p5: p5,
-    private capturer: any = new (window as any).CCapture({ format: "gif", workersPath: '' })
   ) {
   }
 
@@ -13,6 +15,7 @@ export class Sketch {
   }
 
   setup() {
+    this.capturer = new (window as any).CCapture({ format: "gif", workersPath: '', framerate: this.FRAME_RATE });
     const renderer = this.p5.createCanvas(this.SIZE, this.SIZE);
     this.canvas = (renderer as any).canvas;
   }
