@@ -15,6 +15,14 @@ Open `http://localhost:8080/?sketch=SampleSketch`.
 
 https://twitter.com/airtoxin/status/1025545739873574913
 
+### Sketch2018080402
+
+https://twitter.com/airtoxin/status/1025558308550193152
+
+### Sketch2018080403
+
+https://twitter.com/airtoxin/status/1025559415275978752
+
 ### Sketch2018080301
 
 https://twitter.com/airtoxin/status/1025145325281931264
