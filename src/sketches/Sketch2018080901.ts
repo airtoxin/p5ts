@@ -1,7 +1,7 @@
 import { Sketch } from "../Sketch";
 import { range } from "lodash";
 
-const CELL_SIZE = 50;
+const CELL_SIZE = 30;
 
 export class Sketch2018080901 extends Sketch {
   protected SIZE: number = 800;
@@ -10,13 +10,18 @@ export class Sketch2018080901 extends Sketch {
     super.setup();
 
     // this.p5.stroke(100);
-    this.p5.blendMode(this.p5.LIGHTEST);
 
-    this.p5.noLoop();
+    // this.p5.noLoop();
   }
 
   draw() {
     super.draw();
+
+    if (Math.random() < 0.5) {
+      this.p5.blendMode(this.p5.LIGHTEST);
+    } else {
+      this.p5.blendMode(this.p5.BLEND);
+    }
 
     this.p5.background(0);
 
