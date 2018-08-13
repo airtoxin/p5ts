@@ -104,7 +104,7 @@ export class Sketch2018081302 extends Sketch {
       ant.update(this.p5.frameCount * 2);
     }
 
-    if (this.p5.frameCount === 1000) {
+    if (this.p5.frameCount === 500) {
       this.recorder.stop();
     }
   }
