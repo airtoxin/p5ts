@@ -7,34 +7,58 @@ export class CellArray {
     return this.cells[row * this.size + col];
   }
 
-  add(other: CellArray): CellArray {
-    if (this.cells.length !== other.cells.length) throw new Error("Invalid length of array");
+  add(other: number|CellArray): CellArray {
+    if (typeof other === "number") {
+      return this.map(c => c + other);
+    } else {
+      if (this.cells.length !== other.cells.length) throw new Error("Invalid length of array");
 
-    const results: number[] = [];
-    for (let i = 0; i < this.cells.length; i++) {
-      results.push(this.cells[i] + other.cells[i]);
+      const results: number[] = [];
+      for (let i = 0; i < this.cells.length; i++) {
+        results.push(this.cells[i] + other.cells[i]);
+      }
+
+      return new CellArray(results, this.size);
     }
-
-    return new CellArray(results, this.size);
   }
 
-  sub(other: CellArray): CellArray {
-    if (this.cells.length !== other.cells.length) throw new Error("Invalid length of array");
+  sub(other: number|CellArray): CellArray {
+    if (typeof other === "number") {
+      return this.map(c => c - other);
+    } else {
+      if (this.cells.length !== other.cells.length) throw new Error("Invalid length of array");
 
-    const results: number[] = [];
-    for (let i = 0; i < this.cells.length; i++) {
-      results.push(this.cells[i] - other.cells[i]);
+      const results: number[] = [];
+      for (let i = 0; i < this.cells.length; i++) {
+        results.push(this.cells[i] - other.cells[i]);
+      }
+
+      return new CellArray(results, this.size);
     }
-
-    return new CellArray(results, this.size);
   }
 
-  mul(multiplier: number): CellArray {
-    return new CellArray(this.cells.map(c => c * multiplier), this.size);
+  mul(multiplier: number|CellArray): CellArray {
+    if (typeof multiplier === "number") {
+      return new CellArray(this.cells.map(c => c * multiplier), this.size);
+    } else {
+      const results: number[] = [];
+      for (let i = 0; i < this.cells.length; i++) {
+        results.push(this.cells[i] * multiplier.cells[i]);
+      }
+      return new CellArray(results, this.size);
+    }
   }
 
-  div(divider: number): CellArray {
-    return new CellArray(this.cells.map(c => c / divider), this.size);
+  div(divider: number|CellArray): CellArray {
+    if (typeof divider === "number") {
+      return new CellArray(this.cells.map(c => c / divider), this.size);
+    } else {
+      const results: number[] = [];
+      for (let i = 0; i < this.cells.length; i++) {
+        results.push(this.cells[i] / divider.cells[i]);
+      }
+      return new CellArray(results, this.size);
+    }
   }
 
   roll(direction: Directions): CellArray {
