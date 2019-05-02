@@ -30,10 +30,6 @@ export class Sketch2018080801 extends Sketch {
   }
 
   private randomColor(): [number, number, number] {
-    return [
-      Math.random() * 255,
-      Math.random() * 255,
-      Math.random() * 255,
-    ]
+    return [Math.random() * 255, Math.random() * 255, Math.random() * 255];
   }
 }

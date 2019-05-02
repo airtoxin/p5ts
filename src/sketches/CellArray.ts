@@ -7,11 +7,12 @@ export class CellArray {
     return this.cells[row * this.size + col];
   }
 
-  add(other: number|CellArray): CellArray {
+  add(other: number | CellArray): CellArray {
     if (typeof other === "number") {
       return this.map(c => c + other);
     } else {
-      if (this.cells.length !== other.cells.length) throw new Error("Invalid length of array");
+      if (this.cells.length !== other.cells.length)
+        throw new Error("Invalid length of array");
 
       const results: number[] = [];
       for (let i = 0; i < this.cells.length; i++) {
@@ -22,11 +23,12 @@ export class CellArray {
     }
   }
 
-  sub(other: number|CellArray): CellArray {
+  sub(other: number | CellArray): CellArray {
     if (typeof other === "number") {
       return this.map(c => c - other);
     } else {
-      if (this.cells.length !== other.cells.length) throw new Error("Invalid length of array");
+      if (this.cells.length !== other.cells.length)
+        throw new Error("Invalid length of array");
 
       const results: number[] = [];
       for (let i = 0; i < this.cells.length; i++) {
@@ -37,7 +39,7 @@ export class CellArray {
     }
   }
 
-  mul(multiplier: number|CellArray): CellArray {
+  mul(multiplier: number | CellArray): CellArray {
     if (typeof multiplier === "number") {
       return new CellArray(this.cells.map(c => c * multiplier), this.size);
     } else {
@@ -49,7 +51,7 @@ export class CellArray {
     }
   }
 
-  div(divider: number|CellArray): CellArray {
+  div(divider: number | CellArray): CellArray {
     if (typeof divider === "number") {
       return new CellArray(this.cells.map(c => c / divider), this.size);
     } else {
@@ -65,7 +67,6 @@ export class CellArray {
     const results: number[] = [];
 
     switch (direction) {
-
       case "up": {
         for (let row = 1; row < this.size; row++) {
           for (let col = 0; col < this.size; col++) {

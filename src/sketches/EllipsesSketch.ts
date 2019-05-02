@@ -14,7 +14,13 @@ export class EllipsesSketch extends Sketch {
     this.frames++;
 
     this.p5.background(100);
-    this.p5.ellipse(Math.sin(Math.PI/2/50 * this.frames) * this.SIZE / 2 + this.SIZE / 2, this.SIZE / 2, 50, 50);
+    this.p5.ellipse(
+      (Math.sin((Math.PI / 2 / 50) * this.frames) * this.SIZE) / 2 +
+        this.SIZE / 2,
+      this.SIZE / 2,
+      50,
+      50
+    );
     this.capture();
 
     if (this.frames >= 200) {

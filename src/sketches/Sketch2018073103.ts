@@ -2,8 +2,9 @@ import { Sketch } from "../Sketch";
 
 const NUM_CIRCLES = 200;
 
-const degToRad = (degrees: number): number => degrees * Math.PI / 180;
-const cyclic = (degrees: number, cyclicFn = Math.sin): number => cyclicFn(degToRad(degrees));
+const degToRad = (degrees: number): number => (degrees * Math.PI) / 180;
+const cyclic = (degrees: number, cyclicFn = Math.sin): number =>
+  cyclicFn(degToRad(degrees));
 
 export class Sketch2018073103 extends Sketch {
   protected SIZE: number = 800;
@@ -25,7 +26,7 @@ export class Sketch2018073103 extends Sketch {
     this.p5.noFill();
 
     for (let i = 0; i < NUM_CIRCLES; i++) {
-      const size = i / NUM_CIRCLES * this.SIZE;
+      const size = (i / NUM_CIRCLES) * this.SIZE;
       this.p5.ellipse(0, 0, size, size);
       this.p5.ellipse(size, size, this.SIZE - size, this.SIZE - size);
     }

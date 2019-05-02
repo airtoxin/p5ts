@@ -33,13 +33,17 @@ export class Sketch2018072802 extends Sketch {
     this.p5.background(0);
 
     for (let i = 0; i < 500; i += 5) {
-
       if (i % 2 === 0) {
         this.p5.fill(0);
       } else {
         this.p5.fill(255);
       }
-      this.p5.ellipse(150 + this.getDiffX(i), 150 + this.getDiffY(i), 500 - i, 500 - i);
+      this.p5.ellipse(
+        150 + this.getDiffX(i),
+        150 + this.getDiffY(i),
+        500 - i,
+        500 - i
+      );
     }
 
     if (this.p5.frameCount >= 360) {
@@ -49,11 +53,11 @@ export class Sketch2018072802 extends Sketch {
 
   private getDiffX(i: number) {
     const deg = this.p5.frameCount + i;
-    return Math.cos(Math.PI * 2 / 360 * deg) * 50;
+    return Math.cos(((Math.PI * 2) / 360) * deg) * 50;
   }
 
   private getDiffY(i: number) {
     const deg = this.p5.frameCount + i;
-    return Math.sin(Math.PI * 2 / 360 * deg) * 50;
+    return Math.sin(((Math.PI * 2) / 360) * deg) * 50;
   }
 }

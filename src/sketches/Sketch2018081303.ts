@@ -1,8 +1,9 @@
 import { Sketch } from "../Sketch";
 import { random, sample, range } from "lodash";
 
-const degToRad = (degrees: number): number => degrees * Math.PI / 180;
-const cyclic = (degrees: number, cyclicFn = Math.sin): number => cyclicFn(degToRad(degrees));
+const degToRad = (degrees: number): number => (degrees * Math.PI) / 180;
+const cyclic = (degrees: number, cyclicFn = Math.sin): number =>
+  cyclicFn(degToRad(degrees));
 
 const NUM_MARKERS = 200;
 
@@ -12,9 +13,7 @@ interface Point {
 }
 
 class Marker {
-  constructor(
-    private size: number
-  ) {}
+  constructor(private size: number) {}
 
   private x: number = random(this.size);
   private y: number = random(this.size);
@@ -26,7 +25,7 @@ class Marker {
   private getNextXY(): [number, number] {
     return [
       this.x + Math.cos(degToRad(this.direction)) * this.acceleration,
-      this.y + Math.sin(degToRad(this.direction)) * this.acceleration,
+      this.y + Math.sin(degToRad(this.direction)) * this.acceleration
     ];
   }
 
@@ -37,12 +36,7 @@ class Marker {
 
   getLinePoints(): [number, number, number, number] {
     const [nx, ny] = this.getNextXY();
-    return [
-      this.x,
-      this.y,
-      nx,
-      ny
-    ];
+    return [this.x, this.y, nx, ny];
   }
 
   update(p5: p5) {
@@ -57,7 +51,9 @@ class Marker {
 }
 
 export class Sketch2018081303 extends Sketch {
-  private markers: Marker[] = range(NUM_MARKERS).map(() => new Marker(this.SIZE));
+  private markers: Marker[] = range(NUM_MARKERS).map(
+    () => new Marker(this.SIZE)
+  );
   private chunks: any[] = [];
   private recorder: any;
 
@@ -69,7 +65,9 @@ export class Sketch2018081303 extends Sketch {
     this.reset();
 
     const stream = (this.canvas as any).captureStream(30);
-    this.recorder = new (window as any).MediaRecorder(stream, {mimeType: 'video/webm;codecs=vp9'});
+    this.recorder = new (window as any).MediaRecorder(stream, {
+      mimeType: "video/webm;codecs=vp9"
+    });
     this.recorder.ondataavailable = (e: any) => {
       if (e.data.size) {
         this.chunks.push(e.data);
@@ -77,14 +75,14 @@ export class Sketch2018081303 extends Sketch {
     };
     this.recorder.onstop = () => {
       const blob = new Blob(this.chunks, {
-        type: 'video/webm'
+        type: "video/webm"
       });
       const url = URL.createObjectURL(blob);
 
-      const a = document.createElement('a');
+      const a = document.createElement("a");
       document.body.appendChild(a);
       a.href = url;
-      a.download = 'test.webm';
+      a.download = "test.webm";
       a.click();
       window.URL.revokeObjectURL(url);
     };

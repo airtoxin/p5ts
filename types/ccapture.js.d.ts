@@ -1,2 +1,1 @@
-declare module "ccapture.js"
-
+declare module "ccapture.js";

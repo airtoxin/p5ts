@@ -1,7 +1,8 @@
 import { Sketch } from "../Sketch";
 
-const degToRad = (degrees: number): number => degrees * Math.PI / 180;
-const cyclic = (degrees: number, cyclicFn = Math.sin): number => cyclicFn(degToRad(degrees));
+const degToRad = (degrees: number): number => (degrees * Math.PI) / 180;
+const cyclic = (degrees: number, cyclicFn = Math.sin): number =>
+  cyclicFn(degToRad(degrees));
 
 export class Sketch2018080201 extends Sketch {
   protected SIZE: number = 300;
@@ -19,14 +20,18 @@ export class Sketch2018080201 extends Sketch {
     this.p5.background(0);
 
     for (let i = 0; i < 500; i += 5) {
-
       if (i % 2 === 0) {
         this.p5.fill(0);
       } else {
         this.p5.fill(255);
       }
       const halfSize = this.SIZE / 2;
-      this.p5.ellipse(halfSize + this.getDiffX(i), halfSize + this.getDiffY(i), 500 - i, 500 - i);
+      this.p5.ellipse(
+        halfSize + this.getDiffX(i),
+        halfSize + this.getDiffY(i),
+        500 - i,
+        500 - i
+      );
     }
 
     this.capture();

@@ -25,9 +25,9 @@ export class Sketch2018090102 extends Sketch {
         const c = this.getColor();
         const idx = 4 * (y * this.SIZE + x);
         this.p5.pixels[idx] = c;
-        this.p5.pixels[idx+1] = c;
-        this.p5.pixels[idx+2] = c;
-        this.p5.pixels[idx+3] = 255;
+        this.p5.pixels[idx + 1] = c;
+        this.p5.pixels[idx + 2] = c;
+        this.p5.pixels[idx + 3] = 255;
 
         this.noiseX += this.step;
       }

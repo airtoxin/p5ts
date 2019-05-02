@@ -1,12 +1,21 @@
 import { Sketch } from "../Sketch";
 import { sample, sampleSize } from "lodash";
 
-const degToRad = (degrees: number): number => degrees * Math.PI / 180;
-const cyclic = (degrees: number, cyclicFn = Math.sin): number => cyclicFn(degToRad(degrees));
-const percentage = (min: number, max: number, num: number): number => (num - min) / (max - min);
+const degToRad = (degrees: number): number => (degrees * Math.PI) / 180;
+const cyclic = (degrees: number, cyclicFn = Math.sin): number =>
+  cyclicFn(degToRad(degrees));
+const percentage = (min: number, max: number, num: number): number =>
+  (num - min) / (max - min);
 
 type BorderState = "left" | "right" | "top" | "bottom" | "upward" | "downward";
-const borders: BorderState[] = ["left", "right", "top", "bottom", "upward", "downward"];
+const borders: BorderState[] = [
+  "left",
+  "right",
+  "top",
+  "bottom",
+  "upward",
+  "downward"
+];
 
 interface Box {
   x: number;
@@ -41,7 +50,7 @@ export class Sketch2018080402 extends Sketch {
       }
     }
 
-    this.startCapture()
+    this.startCapture();
   }
 
   draw() {

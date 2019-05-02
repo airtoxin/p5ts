@@ -46,7 +46,7 @@ export class Sketch2018080901 extends Sketch {
       // vertical
       this.p5.line(x, 0, x, this.SIZE);
       this.p5.line(x, 0, 0, x); // left upper ／ line
-      this.p5.line(this.SIZE, x, x, this.SIZE) // right bottom ／ line
+      this.p5.line(this.SIZE, x, x, this.SIZE); // right bottom ／ line
     }
     for (const y of ys) {
       if (Math.random() < 0.5) continue;
@@ -60,10 +60,6 @@ export class Sketch2018080901 extends Sketch {
   }
 
   private randomColor(): [number, number, number] {
-    return [
-      Math.random() * 255,
-      Math.random() * 255,
-      Math.random() * 255,
-    ]
+    return [Math.random() * 255, Math.random() * 255, Math.random() * 255];
   }
 }

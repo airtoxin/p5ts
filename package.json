@@ -10,6 +10,7 @@
     "format": "prettier '**/*.{ts,js}' --write"
   },
   "devDependencies": {
+    "@types/big-integer": "^0.0.31",
     "@types/lodash": "^4.14.115",
     "copy-webpack-plugin": "^4.5.2",
     "html-webpack-plugin": "^3.2.0",
@@ -27,6 +28,7 @@
     "webpack-serve": "^2.0.2"
   },
   "dependencies": {
+    "big-integer": "^1.6.43",
     "ccapture.js": "^1.1.0",
     "gif.js": "^0.2.0",
     "lodash": "^4.17.10",

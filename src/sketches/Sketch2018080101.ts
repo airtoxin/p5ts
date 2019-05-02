@@ -1,7 +1,8 @@
 import { Sketch } from "../Sketch";
 
-const degToRad = (degrees: number): number => degrees * Math.PI / 180;
-const cyclic = (degrees: number, cyclicFn = Math.sin): number => cyclicFn(degToRad(degrees));
+const degToRad = (degrees: number): number => (degrees * Math.PI) / 180;
+const cyclic = (degrees: number, cyclicFn = Math.sin): number =>
+  cyclicFn(degToRad(degrees));
 
 const X1 = 100 + Math.random() * 200;
 const Y1 = 100 + Math.random() * 200;
@@ -37,7 +38,16 @@ export class Sketch2018080101 extends Sketch {
       const y3 = cyclic(Y3 + this.p5.frameCount * 3) * this.SIZE;
       const x4 = cyclic(X4 + this.p5.frameCount * 3) * this.SIZE;
       const y4 = cyclic(Y4 + this.p5.frameCount * 3) * this.SIZE;
-      this.p5.bezier(x1 + i, y1 + i, x2 + i, y2 + i, x3 + i, y3 + i, x4 + i, y4 + i);
+      this.p5.bezier(
+        x1 + i,
+        y1 + i,
+        x2 + i,
+        y2 + i,
+        x3 + i,
+        y3 + i,
+        x4 + i,
+        y4 + i
+      );
     }
 
     this.capture();
