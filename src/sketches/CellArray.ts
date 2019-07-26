@@ -11,8 +11,9 @@ export class CellArray {
     if (typeof other === "number") {
       return this.map(c => c + other);
     } else {
-      if (this.cells.length !== other.cells.length)
+      if (this.cells.length !== other.cells.length) {
         throw new Error("Invalid length of array");
+      }
 
       const results: number[] = [];
       for (let i = 0; i < this.cells.length; i++) {
@@ -27,8 +28,9 @@ export class CellArray {
     if (typeof other === "number") {
       return this.map(c => c - other);
     } else {
-      if (this.cells.length !== other.cells.length)
+      if (this.cells.length !== other.cells.length) {
         throw new Error("Invalid length of array");
+      }
 
       const results: number[] = [];
       for (let i = 0; i < this.cells.length; i++) {
