@@ -1,5 +1,7 @@
 export type MatrixIndex = [number, number]; // [row, col]
 
+type UpdaterFn = (n: number) => number;
+
 export class Matrix {
   public readonly rows: number;
   public readonly cols: number;
@@ -8,12 +10,12 @@ export class Matrix {
     this.cols = nums[0].length;
   }
 
-  static fromFill(num: number, rows: number, cols: number): Matrix {
-    return new Matrix([...Array(rows)].map(() => [...Array(cols)].fill(num)));
+  static fromFill(rows: number, cols: number, numOrSetter: number | (() => number)): Matrix {
+    return new Matrix([...Array(rows)].map(() => [...Array(cols)].map(() => typeof numOrSetter === "function" ? numOrSetter() : numOrSetter)));
   }
 
   static zeros(rows: number, cols: number): Matrix {
-    return Matrix.fromFill(0, rows, cols);
+    return Matrix.fromFill(rows, cols, 0);
   }
 
   static identity(rows: number, cols: number): Matrix {
@@ -36,6 +38,12 @@ export class Matrix {
 
   get(index: MatrixIndex): number {
     return this.nums[index[0]][index[1]];
+  }
+
+  set([row, col]: MatrixIndex, num: number | UpdaterFn): Matrix {
+    const cp = [...this.nums];
+    cp[row][col] = typeof num === "function" ? num(cp[row][col]) : num;
+    return new Matrix(cp);
   }
 
   getRow(index: number): number[] {

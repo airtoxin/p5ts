@@ -1,3 +1,5 @@
+type OnClickFunc = (mouseX: number, mouseY: number) => void;
+
 export class Sketch {
   protected SIZE: number = 500;
   protected canvas?: HTMLCanvasElement;
@@ -19,9 +21,14 @@ export class Sketch {
     });
     const renderer = this.p5.createCanvas(this.SIZE, this.SIZE);
     this.canvas = (renderer as any).canvas;
+    this.p5.mouseClicked = () => this.onClick(this.p5.mouseX, this.p5.mouseY);
   }
 
   draw() {
+    // NOTHING
+  }
+
+  onClick(mouseX: number, mouseY: number): void {
     // NOTHING
   }
 
