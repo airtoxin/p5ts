@@ -10,8 +10,8 @@ export class Matrix {
     this.cols = nums[0].length;
   }
 
-  static fromFill(rows: number, cols: number, numOrSetter: number | (() => number)): Matrix {
-    return new Matrix([...Array(rows)].map(() => [...Array(cols)].map(() => typeof numOrSetter === "function" ? numOrSetter() : numOrSetter)));
+  static fromFill(rows: number, cols: number, numOrSetter: number | ((row: number, col: number) => number)): Matrix {
+    return new Matrix([...Array(rows)].map((_, row) => [...Array(cols)].map((_, col) => typeof numOrSetter === "function" ? numOrSetter(row, col) : numOrSetter)));
   }
 
   static zeros(rows: number, cols: number): Matrix {
