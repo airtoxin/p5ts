@@ -1,5 +1,6 @@
 import { Sketch } from "../Sketch";
 import { CellArray } from "./CellArray";
+import { Color } from "p5";
 
 const percentage = (min: number, max: number, num: number): number =>
   (num - min) / (max - min);
@@ -122,7 +123,7 @@ export class Sketch2018093004 extends Sketch {
     this.p5.updatePixels();
   }
 
-  private getColor(value: number): p5.Color {
+  private getColor(value: number): Color {
     return this.p5.lerpColor(
       this.p5.color(20, 100, 68),
       this.p5.color(78, 78, 84),

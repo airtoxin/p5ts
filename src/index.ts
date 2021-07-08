@@ -1,4 +1,4 @@
-import "p5";
+import p5 from "p5";
 import { bindSketchToP5 } from "./Sketch";
 
 const sketch =

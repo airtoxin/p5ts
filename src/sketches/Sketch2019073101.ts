@@ -1,6 +1,6 @@
-import "p5";
 import { Sketch } from "../Sketch";
 import { Matrix } from "./Matrix";
+import { Color } from "p5";
 
 export class Sketch2019073101 extends Sketch {
   protected SIZE: number = 500;
@@ -83,8 +83,8 @@ export class Sketch2019073101 extends Sketch {
     matrix: Matrix,
     xOffset: number,
     yOffset: number,
-    c1: p5.Color,
-    c2: p5.Color
+    c1: Color,
+    c2: Color
   ) {
     matrix.forEach((num, [row, col]) => {
       const posX = (xOffset + col) * this.SCALAR;

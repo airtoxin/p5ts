@@ -1,3 +1,5 @@
+import p5 from "p5";
+
 type OnClickFunc = (mouseX: number, mouseY: number) => void;
 
 export class Sketch {
