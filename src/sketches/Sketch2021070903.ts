@@ -37,7 +37,8 @@ export class Sketch2021070903 extends Sketch {
       this.p5.scale(0.4);
       this.p5.rotate(((this.p5.PI * 2) / this.NUM_CLONES) * j);
       this.p5.translate(
-        cyclic(this.p5.frameCount, Math.cos) * this.SIZE - this.SIZE / 2,
+        cyclic(this.p5.frameCount / 2, Math.cos) * (this.SIZE / 2) -
+          this.SIZE / 2,
         0
       );
 
