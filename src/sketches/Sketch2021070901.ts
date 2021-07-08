@@ -20,14 +20,14 @@ export class Sketch2021070901 extends Sketch {
     for (let i = 0; i < this.linePoints.length; i++) {
       this.p5.curve(
         this.linePoints[i],
-        this.linePoints[(i+1) % this.linePoints.length],
-        this.linePoints[(i+2) % this.linePoints.length],
-        this.linePoints[(i+3) % this.linePoints.length],
-        this.linePoints[(i+4) % this.linePoints.length],
-        this.linePoints[(i+5) % this.linePoints.length],
-        this.linePoints[(i+6) % this.linePoints.length],
-        this.linePoints[(i+7) % this.linePoints.length],
-      )
+        this.linePoints[(i + 1) % this.linePoints.length],
+        this.linePoints[(i + 2) % this.linePoints.length],
+        this.linePoints[(i + 3) % this.linePoints.length],
+        this.linePoints[(i + 4) % this.linePoints.length],
+        this.linePoints[(i + 5) % this.linePoints.length],
+        this.linePoints[(i + 6) % this.linePoints.length],
+        this.linePoints[(i + 7) % this.linePoints.length]
+      );
     }
 
     this.p5.pop();

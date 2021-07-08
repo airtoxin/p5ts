@@ -17,7 +17,7 @@ export class Sketch {
     this.capturer = new (window as any).CCapture({
       format: "gif",
       workersPath: "",
-      framerate: this.FRAME_RATE
+      framerate: this.FRAME_RATE,
     });
     const renderer = this.p5.createCanvas(this.SIZE, this.SIZE);
     this.canvas = (renderer as any).canvas;
@@ -52,12 +52,11 @@ export class Sketch {
 
 type Constructor<T = {}> = new (...args: any[]) => T;
 
-export const bindSketchToP5 = (SketchConstructor: Constructor<Sketch>) => (
-  p5: p5
-) => {
-  const sketch = new SketchConstructor(p5);
-  p5.preload = sketch.preload.bind(sketch);
-  p5.setup = sketch.setup.bind(sketch);
-  p5.draw = sketch.draw.bind(sketch);
-  p5.windowResized = sketch.windowResized.bind(sketch);
-};
+export const bindSketchToP5 =
+  (SketchConstructor: Constructor<Sketch>) => (p5: p5) => {
+    const sketch = new SketchConstructor(p5);
+    p5.preload = sketch.preload.bind(sketch);
+    p5.setup = sketch.setup.bind(sketch);
+    p5.draw = sketch.draw.bind(sketch);
+    p5.windowResized = sketch.windowResized.bind(sketch);
+  };

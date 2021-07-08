@@ -14,7 +14,7 @@ const borders: BorderState[] = [
   "top",
   "bottom",
   "upward",
-  "downward"
+  "downward",
 ];
 
 interface Box {
@@ -42,7 +42,7 @@ export class Sketch2018080401 extends Sketch {
           x,
           y,
           size: BOX_SIZE,
-          border: sample(borders) as BorderState
+          border: sample(borders) as BorderState,
         });
       }
     }

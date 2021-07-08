@@ -11,14 +11,14 @@ export class Sketch2019073101 extends Sketch {
   private matrixA = Matrix.fromFill(this.ROWS, this.COLS, (row, col) => {
     return Number(row % this.COLS === col);
   });
-  private matrixB = Matrix.fromFill(this.COLS, this.COLS, () => Math.floor(Math.random() * 2));
+  private matrixB = Matrix.fromFill(this.COLS, this.COLS, () =>
+    Math.floor(Math.random() * 2)
+  );
   private matrixC = Matrix.fromFill(this.COLS, this.ROWS, (row, col) => {
     return Number(row === col % this.COLS);
   });
   private get matrixP() {
-    return this.matrixA
-      .mul(this.matrixB.transpose())
-      .mul(this.matrixC);
+    return this.matrixA.mul(this.matrixB.transpose()).mul(this.matrixC);
   }
 
   onClick(mouseX: number, mouseY: number): void {
@@ -26,7 +26,7 @@ export class Sketch2019073101 extends Sketch {
     const y = Math.floor(mouseY / this.SCALAR);
     if (y < this.COLS) {
       if (x < this.COLS) {
-        this.matrixB = this.matrixB.set([y, x], n => (n + 1) % 2);
+        this.matrixB = this.matrixB.set([y, x], (n) => (n + 1) % 2);
       }
     }
   }

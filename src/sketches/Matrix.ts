@@ -10,8 +10,20 @@ export class Matrix {
     this.cols = nums[0].length;
   }
 
-  static fromFill(rows: number, cols: number, numOrSetter: number | ((row: number, col: number) => number)): Matrix {
-    return new Matrix([...Array(rows)].map((_, row) => [...Array(cols)].map((_, col) => typeof numOrSetter === "function" ? numOrSetter(row, col) : numOrSetter)));
+  static fromFill(
+    rows: number,
+    cols: number,
+    numOrSetter: number | ((row: number, col: number) => number)
+  ): Matrix {
+    return new Matrix(
+      [...Array(rows)].map((_, row) =>
+        [...Array(cols)].map((_, col) =>
+          typeof numOrSetter === "function"
+            ? numOrSetter(row, col)
+            : numOrSetter
+        )
+      )
+    );
   }
 
   static zeros(rows: number, cols: number): Matrix {
@@ -71,20 +83,20 @@ export class Matrix {
   mul(m: Matrix): Matrix {
     if (this.cols !== m.rows) {
       throw new Error(
-        `Can't multiply matrix(${this.rows},${this.cols}) * matrix(${m.rows},${
-          m.cols
-        })`
+        `Can't multiply matrix(${this.rows},${this.cols}) * matrix(${m.rows},${m.cols})`
       );
     }
 
-    return Matrix.zeros(this.rows, m.cols).map(
-      (_, [row, col]) => this.matrixMulRowCols(this.getRow(row), m.getCol(col))
+    return Matrix.zeros(this.rows, m.cols).map((_, [row, col]) =>
+      this.matrixMulRowCols(this.getRow(row), m.getCol(col))
     );
   }
 
   private matrixMulRowCols(row: number[], col: number[]): number {
     if (row.length !== col.length) {
-      throw new Error(`Can't multiply row and col because of length is different. (rows:${row.length}, col:${col.length})`);
+      throw new Error(
+        `Can't multiply row and col because of length is different. (rows:${row.length}, col:${col.length})`
+      );
     }
     return row.map((n, i) => n * col[i]).reduce((a, n) => a + n, 0);
   }

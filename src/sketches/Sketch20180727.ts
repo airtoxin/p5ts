@@ -28,12 +28,12 @@ export class Sketch20180727 extends Sketch {
         this.state.push({
           offset: {
             x: (xi * this.SIZE) / NUM_RECTS_X + 1,
-            y: (yi * this.SIZE) / NUM_RECTS_Y + 1
+            y: (yi * this.SIZE) / NUM_RECTS_Y + 1,
           },
           size: {
             width: this.SIZE / NUM_RECTS_X - 2,
-            height: this.SIZE / NUM_RECTS_Y - 2
-          }
+            height: this.SIZE / NUM_RECTS_Y - 2,
+          },
         });
       });
     });
@@ -52,7 +52,7 @@ export class Sketch20180727 extends Sketch {
     if (this.p5.frameCount % 10 !== 0) return;
 
     this.p5.background(0, 50);
-    this.state.forEach(box => {
+    this.state.forEach((box) => {
       if (Math.random() < 0.9) return;
 
       this.p5.fill(52, 123, 193);

@@ -14,7 +14,7 @@ const borders: BorderState[] = [
   "top",
   "bottom",
   "upward",
-  "downward"
+  "downward",
 ];
 
 interface Box {
@@ -45,7 +45,7 @@ export class Sketch2018080501 extends Sketch {
           y,
           size: cyclic(this.p5.frameCount * 2 + offset) * BOX_SIZE,
           border: sample(borders) as BorderState,
-          offset
+          offset,
         });
       }
     }
@@ -58,7 +58,7 @@ export class Sketch2018080501 extends Sketch {
 
     this.p5.background(0);
 
-    this.boxes = this.boxes.map(box => {
+    this.boxes = this.boxes.map((box) => {
       this.drawBox(box);
       return this.updateBox(box);
     });
@@ -102,7 +102,7 @@ export class Sketch2018080501 extends Sketch {
   private updateBox(box: Box): Box {
     return {
       ...box,
-      size: cyclic(this.p5.frameCount * 2 + box.offset) * BOX_SIZE
+      size: cyclic(this.p5.frameCount * 2 + box.offset) * BOX_SIZE,
     };
   }
 }

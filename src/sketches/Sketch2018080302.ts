@@ -34,7 +34,7 @@ export class Sketch2018080302 extends Sketch {
           [x, y],
           [x, y + rectSize],
           [x + rectSize, y],
-          [x + rectSize, y + rectSize]
+          [x + rectSize, y + rectSize],
         ];
         const [[x1, y1], [x2, y2]] = sampleSize(points, 2);
         this.p5.line(x1, y1, x2, y2);

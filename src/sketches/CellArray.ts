@@ -9,7 +9,7 @@ export class CellArray {
 
   add(other: number | CellArray): CellArray {
     if (typeof other === "number") {
-      return this.map(c => c + other);
+      return this.map((c) => c + other);
     } else {
       if (this.cells.length !== other.cells.length) {
         throw new Error("Invalid length of array");
@@ -26,7 +26,7 @@ export class CellArray {
 
   sub(other: number | CellArray): CellArray {
     if (typeof other === "number") {
-      return this.map(c => c - other);
+      return this.map((c) => c - other);
     } else {
       if (this.cells.length !== other.cells.length) {
         throw new Error("Invalid length of array");
@@ -43,7 +43,10 @@ export class CellArray {
 
   mul(multiplier: number | CellArray): CellArray {
     if (typeof multiplier === "number") {
-      return new CellArray(this.cells.map(c => c * multiplier), this.size);
+      return new CellArray(
+        this.cells.map((c) => c * multiplier),
+        this.size
+      );
     } else {
       const results: number[] = [];
       for (let i = 0; i < this.cells.length; i++) {
@@ -55,7 +58,10 @@ export class CellArray {
 
   div(divider: number | CellArray): CellArray {
     if (typeof divider === "number") {
-      return new CellArray(this.cells.map(c => c / divider), this.size);
+      return new CellArray(
+        this.cells.map((c) => c / divider),
+        this.size
+      );
     } else {
       const results: number[] = [];
       for (let i = 0; i < this.cells.length; i++) {

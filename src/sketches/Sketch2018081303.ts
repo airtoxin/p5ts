@@ -25,7 +25,7 @@ class Marker {
   private getNextXY(): [number, number] {
     return [
       this.x + Math.cos(degToRad(this.direction)) * this.acceleration,
-      this.y + Math.sin(degToRad(this.direction)) * this.acceleration
+      this.y + Math.sin(degToRad(this.direction)) * this.acceleration,
     ];
   }
 
@@ -66,7 +66,7 @@ export class Sketch2018081303 extends Sketch {
 
     const stream = (this.canvas as any).captureStream(30);
     this.recorder = new (window as any).MediaRecorder(stream, {
-      mimeType: "video/webm;codecs=vp9"
+      mimeType: "video/webm;codecs=vp9",
     });
     this.recorder.ondataavailable = (e: any) => {
       if (e.data.size) {
@@ -75,7 +75,7 @@ export class Sketch2018081303 extends Sketch {
     };
     this.recorder.onstop = () => {
       const blob = new Blob(this.chunks, {
-        type: "video/webm"
+        type: "video/webm",
       });
       const url = URL.createObjectURL(blob);
 

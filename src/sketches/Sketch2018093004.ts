@@ -99,12 +99,7 @@ export class Sketch2018093004 extends Sketch {
     const dudt = laplacianU
       .mul(this.du)
       .sub(this.u.mul(this.v).mul(this.v))
-      .add(
-        this.u
-          .mul(-1)
-          .add(1)
-          .mul(this.f)
-      );
+      .add(this.u.mul(-1).add(1).mul(this.f));
     const dvdt = laplacianV
       .mul(this.dv)
       .add(this.u.mul(this.v).mul(this.v))
