@@ -6,7 +6,7 @@ const degToRad = (degrees: number): number => (degrees * Math.PI) / 180;
 const cyclic = (degrees: number, cyclicFn = Math.sin): number =>
   cyclicFn(degToRad(degrees));
 
-export class Sketch2021070903 extends Sketch {
+export class Sketch2021070904 extends Sketch {
   protected SIZE: number = 300;
   protected FRAME_RATE: number = 60;
 
@@ -19,20 +19,20 @@ export class Sketch2021070903 extends Sketch {
   }
 
   draw() {
-    if (this.p5.frameCount === 1) {
-      this.startCapture();
-    }
+    // if (this.p5.frameCount === 1) {
+    //   this.startCapture();
+    // }
 
     this.p5.background("aliceblue");
     super.draw();
 
     this.drawLines();
 
-    this.capture();
-
-    if (this.p5.frameCount >= 720) {
-      this.stopCapture();
-    }
+    // this.capture();
+    //
+    // if (this.p5.frameCount >= 720) {
+    //   this.stopCapture();
+    // }
   }
 
   private drawLines() {
@@ -43,6 +43,10 @@ export class Sketch2021070903 extends Sketch {
 
     for (let j = 0; j < this.NUM_CLONES; j++) {
       this.p5.translate(this.SIZE / 2, this.SIZE / 2);
+      this.p5.translate(
+        (cyclic(this.p5.frameCount / 2, Math.cos) * this.SIZE) / 10,
+        (cyclic(this.p5.frameCount / 2, Math.sin) * this.SIZE) / 10
+      );
 
       this.p5.scale(0.4);
       this.p5.rotate(((this.p5.PI * 2) / this.NUM_CLONES) * j);

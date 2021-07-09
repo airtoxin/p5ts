@@ -19,6 +19,7 @@ export class Sketch {
       format: "gif",
       workersPath: "",
       framerate: this.FRAME_RATE,
+      verbose: true,
     });
     const renderer = this.p5.createCanvas(this.SIZE, this.SIZE);
     this.canvas = (renderer as any).canvas;
