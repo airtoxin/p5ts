@@ -13,17 +13,17 @@ export class Sketch2021071104 extends Sketch {
     super.setup();
     this.p5.pixelDensity(1);
     this.p5.background("black");
-    this.p5.stroke(255, 255, 255, 50);
+    this.p5.stroke(255, 255, 255);
     this.p5.fill("black");
   }
 
   private prevVectors: Vector[] = [];
   draw() {
-    if (this.p5.frameCount === 1) this.startCapture();
+    this.p5.background(0, 0, 0, 50);
 
     this.p5.translate(this.SIZE / 2, this.SIZE / 2);
 
-    const i = this.p5.frameCount * 17;
+    const i = this.p5.frameCount * 10;
     for (let b = 0; b < this.SIZE / 2; b += 10) {
       const a = this.SIZE / 4;
       const rad = degToRad(i);
@@ -37,12 +37,6 @@ export class Sketch2021071104 extends Sketch {
       this.prevVectors[b] = vector;
     }
 
-    this.capture();
-
     this.p5.resetMatrix();
-
-    if (this.p5.frameCount > 500) {
-      this.stopCapture();
-    }
   }
 }
